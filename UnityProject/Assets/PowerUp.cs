@@ -11,17 +11,23 @@ public class PowerUp : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
         if(other.CompareTag("Player")){
-            Pickup(other);//Start Coroutine wenn added
+            StartCoroutine(Pickup(other));//Start Coroutine wenn added
         }
     }
     
-    void Pickup(Collider player){ //IEnumerator
+    IEnumerator Pickup(Collider player){ //IEnumerator
         Debug.Log("PowerUP picked up!");
         //Spawn a cool effect
         Instantiate(pickupEffect, transform.position, transform.rotation);
 
         //Apply effect to the player
         player.transform.localScale *= multiplier;
+
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<Collider>().enabled = false;
+
+        yield return new WaitForSeconds(duration);
+        player.transform.localScale /= multiplier;
 
         /*
         Player stats = player.GetComponent<PlayerStats>();
@@ -30,7 +36,7 @@ public class PowerUp : MonoBehaviour
 
 
         WAIT X AMOUNT OF SECONDS
-        yield return new WaitForSeconds(duration);
+        
 
         stats.health /= multiplier;
         */
