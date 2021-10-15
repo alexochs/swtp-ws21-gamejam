@@ -16,6 +16,6 @@ public class HeadsUpDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        pointsText.text = "Points: " + gameManager.getPoints().ToString();
+        pointsText.text = "Points: " + gameManager.GetPoints().ToString();
     }
 }

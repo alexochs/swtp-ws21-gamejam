@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,29 +19,35 @@ public class GameManager : MonoBehaviour
         points += 1;
     }
 
-    public string getStatus()
+    public string GetStatus()
     {
         return this.status;
     }
 
-    public void setStatus(string status)
+    public void SetStatus(string status)
     {
         this.status = status;
     }
 
-    public int getPoints()
+    public int GetPoints()
     {
         return this.points;
+        
     }
 
-    public void setPoints(int points)
+    public void SetPoints(int points)
     {
         this.points = points;
     }
 
-    public void addPoints(int points)
+    public void AddPoints(int points)
     {
         this.points += points;
+    }
+
+    private void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
     private void Reset()
