@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float friction;
+
+    int xPosition;
+    int yPosition;
+    float destructionTimer = 0f;
+
+    private void Awake()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void die(){
+        //animation
+        Destroy(this.gameObject, destructionTimer);
+    }
+
+    public void resize(float size){
+        this.transform.localScale = new Vector3(size,size,size);
     }
 }
