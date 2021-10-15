@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        points += 1;
+        if (this.status == "INGAME") points++;
     }
 
     public string GetStatus()
@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
     public int GetPoints()
     {
         return this.points;
-        
     }
 
     public void SetPoints(int points)
@@ -43,6 +42,17 @@ public class GameManager : MonoBehaviour
     public void AddPoints(int points)
     {
         this.points += points;
+    }
+
+    public void StartNewGame()
+    {
+        LoadScene("GameManagerScene");
+        this.status = "INGAME";
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     private void LoadScene(string sceneName)

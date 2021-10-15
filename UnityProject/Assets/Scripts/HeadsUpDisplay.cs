@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class HeadsUpDisplay : MonoBehaviour
 {
-    public GameManager gameManager;
-
+    private GameManager gameManager;
     private TextMesh pointsText;
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         pointsText = (TextMesh)GameObject.Find("Points").GetComponent<TextMesh>();
     }
 
