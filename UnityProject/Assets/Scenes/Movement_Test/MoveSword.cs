@@ -93,7 +93,6 @@ public class MoveSword : MonoBehaviour
             print("Mouse pressed");
         }
         
-        Debug.Log(Vector3.right + new Vector3(totalForce.x, totalForce.y, 0));
         //rb.AddForce(-totalForce);
         if(Input.GetMouseButtonDown(0)){
             rb.AddForce(direction*0.05f, ForceMode.Impulse);
