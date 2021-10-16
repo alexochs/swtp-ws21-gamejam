@@ -23,13 +23,15 @@ public class MapGenerator : MonoBehaviour
     int lastFloorPosy;
     
     GameObject player;
-
+    BlockManager blockManager;
 
     void Start()
     {
+        blockManager = GetComponent<BlockManager>();
+        player = GameObject.FindGameObjectWithTag("Player");
+
         lastFloorPosy = 0;
         generate(0, startingBlocks);
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     
@@ -37,7 +39,7 @@ public class MapGenerator : MonoBehaviour
     {
         if(Vector3.Distance(player.transform.position, new Vector3(lastFloorPosx*blockSize, player.transform.position.y, player.transform.position.z)) <= spawnDistance){
             generate(lastFloorPosx, 25);
-        }   
+        }  
     }
 
 
@@ -59,7 +61,9 @@ public class MapGenerator : MonoBehaviour
 
                     //determine two spawns for top and bottom floor tile
                     Vector3 spawnPos1 = new Vector3(lastFloorPosx*blockSize, bottomPostion + blockSize*lastFloorPosy, 0);
-                    Instantiate(floor[Random.Range(0,floor.Length)], spawnPos1, Quaternion.identity);
+                    GameObject floorBlock = Instantiate(floor[Random.Range(0,floor.Length)], spawnPos1, Quaternion.identity);
+                    floorBlock.GetComponent<Block>().xPosition = lastFloorPosx;
+                    blockManager.blocks.Add(floorBlock);
                 }
                 else{
                     //generate 1-x gaps
@@ -76,11 +80,13 @@ public class MapGenerator : MonoBehaviour
         //spawn 2-4 floating at random height
         int height = Random.Range(2,7);
         for(int i = 0; i < Random.Range(1,5); i++){
-            Instantiate(
+            GameObject floBlock = Instantiate(
                 floatingBlock[Random.Range(0,floatingBlock.Length)], 
                 new Vector3((lastFloorPosx+i)*blockSize, bottomPostion + blockSize*(lastFloorPosy+height), 0), 
                 Quaternion.identity
             );
+            floBlock.GetComponent<Block>().xPosition = lastFloorPosx;
+            blockManager.blocks.Add(floBlock);
         }
     } 
 

@@ -5,9 +5,9 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
     public float friction;
-
-    int xPosition;
-    int yPosition;
+    public int xPosition;
+    public int yPosition;
+    
     float destructionTimer = 0f;
 
     private void Awake()
