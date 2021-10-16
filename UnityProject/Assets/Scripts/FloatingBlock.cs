@@ -27,6 +27,7 @@ public class FloatingBlock : Block
         minX = transform.position.x-3;
         maxY = transform.position.y+3;
         minY = transform.position.y-2;
+        
     }
     
     void Update()
