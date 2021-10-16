@@ -74,7 +74,12 @@ public class MoveSword : MonoBehaviour
         transform.rotation = Quaternion.Euler(0,0,angle);
 
 
-        print(mousePos);
+        
+
+        if( Input.GetMouseButtonDown(1)== true){
+
+            print("Mouse pressed");
+        }
         
 
     }

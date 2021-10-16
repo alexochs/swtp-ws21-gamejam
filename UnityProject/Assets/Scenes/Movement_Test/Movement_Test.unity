@@ -189,7 +189,7 @@ CharacterJoint:
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
-  m_ConnectedMassScale: 10
+  m_ConnectedMassScale: 3
 --- !u!136 &59651359
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -903,7 +903,7 @@ CharacterJoint:
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
-  m_ConnectedMassScale: 10
+  m_ConnectedMassScale: 2
 --- !u!54 &701702040
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1008,7 +1008,7 @@ CharacterJoint:
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
-  m_ConnectedMassScale: 10
+  m_ConnectedMassScale: 2
 --- !u!54 &744649824
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1105,7 +1105,7 @@ CharacterJoint:
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
-  m_ConnectedMassScale: 10
+  m_ConnectedMassScale: 3
 --- !u!136 &837291542
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1342,7 +1342,7 @@ CharacterJoint:
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
-  m_ConnectedMassScale: 10
+  m_ConnectedMassScale: 5
 --- !u!54 &1304794991
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1439,7 +1439,7 @@ CharacterJoint:
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
-  m_ConnectedMassScale: 10
+  m_ConnectedMassScale: 5
 --- !u!136 &1932666819
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1520,7 +1520,7 @@ CharacterJoint:
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
-  m_ConnectedMassScale: 10
+  m_ConnectedMassScale: 6
 --- !u!65 &2093794476
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1614,4 +1614,4 @@ CharacterJoint:
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
-  m_ConnectedMassScale: 10
+  m_ConnectedMassScale: 5
