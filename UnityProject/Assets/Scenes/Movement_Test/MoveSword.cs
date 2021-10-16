@@ -140,14 +140,10 @@ public class MoveSword : MonoBehaviour
         //Debug.Log("timeGone : "+ timeGone + "coolDownJump :  "+ cooldownJump);
     }
 
-    void FixedUpdate(){
-
-      
-        
-
-        
-
-
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Skeleton"){
+            Destroy(other.gameObject);
+        }
     }
 }
