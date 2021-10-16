@@ -29,8 +29,9 @@ public class MoveSword : MonoBehaviour
     
     Slider forceBar;
 
+    float forcePool = 0f;
     float forceMultiplier;
-    float forceRate = 15f;
+    float forceRate = 25f;
 
 
     
@@ -52,10 +53,13 @@ public class MoveSword : MonoBehaviour
     void Update()
     {
        //Movement
-        forceBar.value = forceMultiplier;
+        forceBar.value = forcePool;
 
-        if(Input.GetMouseButton(0)){
+        if(forcePool<=maxForce) forcePool += 5f*Time.deltaTime;
+
+        if(Input.GetMouseButton(0) && forcePool>0){
             forceMultiplier += forceRate*Time.deltaTime;
+            forcePool -= forceRate*Time.deltaTime;
             if(forceMultiplier >= maxForce) forceMultiplier = 15f;
         }
 
