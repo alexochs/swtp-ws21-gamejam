@@ -7,14 +7,17 @@ public class MoveSword : MonoBehaviour
 
     public int height ;
     public float maxHeight;
+    public float speed;
 
     float swordAngle;
 
     Camera cam;
 
     Vector3 anchorVector = new Vector3();
-
-
+    Rigidbody rb;
+    Rigidbody torso;
+    Rigidbody leftLeg;
+    Rigidbody rightLeg;
 
 
 
@@ -24,8 +27,11 @@ public class MoveSword : MonoBehaviour
     {
     
 
-       cam = Camera.main;
-        
+        cam = Camera.main;
+        rb = GetComponent<Rigidbody>();
+        torso = GameObject.Find("spine.003").GetComponent<Rigidbody>();
+        leftLeg = GameObject.Find("shin.L").GetComponent<Rigidbody>();
+        rightLeg = GameObject.Find("shin.R").GetComponent<Rigidbody>();   
     }
 
     // Update is called once per frame
@@ -36,10 +42,10 @@ public class MoveSword : MonoBehaviour
         float xInput = Input.GetAxis("Horizontal");
         float yInput = Input.GetAxis("Vertical");
         
-        Vector3 moveDirection = new Vector3(xInput,yInput, 0.0f);
-        transform.position += moveDirection/30 ;
+        //Vector3 moveDirection = new Vector3(xInput,yInput, 0.0f);
+        //transform.position += moveDirection/30 ;
 
-
+        if(transform.position.z != 0) transform.position = new Vector3(transform.position.x, transform.position.y, 0);
       //Anker
 
       anchorVector = GetComponentInChildren<Transform>().position;
@@ -55,7 +61,13 @@ public class MoveSword : MonoBehaviour
 
       k.transform.position = zwischenvektor;
 
+        
+        Vector2 torsoForce = torso.velocity*torso.mass;
+        Vector2 legLForce = leftLeg.velocity*leftLeg.mass; 
+        Vector2 legRForce = rightLeg.velocity*rightLeg.mass;
 
+        Vector2 totalForce = (torsoForce+legLForce+legRForce)*0.05f;
+        
 
 
 
@@ -73,7 +85,7 @@ public class MoveSword : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0,0,angle);
 
-
+        
         
 
         if( Input.GetMouseButtonDown(1)== true){
@@ -81,13 +93,17 @@ public class MoveSword : MonoBehaviour
             print("Mouse pressed");
         }
         
-
+        Debug.Log(Vector3.right + new Vector3(totalForce.x, totalForce.y, 0));
+        //rb.AddForce(-totalForce);
+        if(Input.GetMouseButtonDown(0)){
+            rb.AddForce(direction*0.05f, ForceMode.Impulse);
+        }
     }
 
     void FixedUpdate(){
 
       
-
+        
 
         
 
