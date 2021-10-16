@@ -14,9 +14,13 @@ public class MapGenerator : MonoBehaviour
     public int maxFloorHeight = 5;
     public int steps;
     public float spawnDistance;
+    public float powerUpSpawnChance;
+    public float monsterSpawnChance;
 
     public GameObject[] floor;
     public GameObject[] floatingBlock;
+    public GameObject[] powerUps;
+    public GameObject[] monsters;
 
     //x and y position of the last instantiated Blocks
     int lastFloorPosx;
@@ -64,6 +68,22 @@ public class MapGenerator : MonoBehaviour
                     GameObject floorBlock = Instantiate(floor[Random.Range(0,floor.Length)], spawnPos1, Quaternion.identity);
                     floorBlock.GetComponent<Block>().xPosition = lastFloorPosx;
                     blockManager.blocks.Add(floorBlock);
+
+                    //Spawn PowerUps and Enemies
+                    int r = Random.Range(0,100);
+                    if(Random.Range(0,100)<=powerUpSpawnChance){
+                        Instantiate(
+                        powerUps[Random.Range(0,powerUps.Length)], 
+                        new Vector3((lastFloorPosx+i)*blockSize, 
+                        bottomPostion + blockSize*(lastFloorPosy+1), 0), Quaternion.identity);
+                    }
+                    else if(r<= monsterSpawnChance){
+                        Instantiate(
+                        monsters[Random.Range(0,monsters.Length)], 
+                        new Vector3((lastFloorPosx+i)*blockSize, 
+                        bottomPostion + blockSize*(lastFloorPosy+1), 0), Quaternion.identity);
+                    }
+
                 }
                 else{
                     //generate 1-x gaps
