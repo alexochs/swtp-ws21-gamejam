@@ -22,6 +22,7 @@ public class MoveSword : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    
 
        cam = Camera.main;
         
@@ -36,12 +37,25 @@ public class MoveSword : MonoBehaviour
         float yInput = Input.GetAxis("Vertical");
         
         Vector3 moveDirection = new Vector3(xInput,yInput, 0.0f);
-        transform.position += moveDirection ;
+        transform.position += moveDirection/30 ;
 
 
       //Anker
 
       anchorVector = GetComponentInChildren<Transform>().position;
+
+
+      // Attachement
+
+      GameObject k = GameObject.Find("hand.R");
+      Vector3 zwischenvektor = anchorVector;
+      // Nachjustierung für Hand
+
+      //zwischenvektor.y +=  -0.3f;
+
+      k.transform.position = zwischenvektor;
+
+
 
 
 
@@ -61,6 +75,7 @@ public class MoveSword : MonoBehaviour
 
 
         print(mousePos);
+        
 
     }
 
