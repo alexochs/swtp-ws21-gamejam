@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     public void StartNewGame()
     {
-        LoadScene("GameManagerScene");
+        LoadScene("Game");
         this.status = "INGAME";
     }
 
