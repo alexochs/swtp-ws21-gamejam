@@ -9,6 +9,11 @@ public class MoveSword : MonoBehaviour
     public float maxHeight;
     public float speed;
 
+    public float cooldownJump = 5;
+   
+
+    private float timeGone;
+
     float swordAngle;
 
     Camera cam;
@@ -25,6 +30,8 @@ public class MoveSword : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+     
     
 
         cam = Camera.main;
@@ -38,6 +45,8 @@ public class MoveSword : MonoBehaviour
     void Update()
     {
        //Movement
+
+      // cooldownJump = 5;
 
         float xInput = Input.GetAxis("Horizontal");
         float yInput = Input.GetAxis("Vertical");
@@ -88,16 +97,37 @@ public class MoveSword : MonoBehaviour
         
         
 
-        if( Input.GetMouseButtonDown(1)== true){
-
-            print("Mouse pressed");
-        }
         
-        Debug.Log(Vector3.right + new Vector3(totalForce.x, totalForce.y, 0));
+        
+//Debug.Log(Vector3.right + new Vector3(totalForce.x, totalForce.y, 0));
         //rb.AddForce(-totalForce);
-        if(Input.GetMouseButtonDown(0)){
+
+
+
+        if(Input.GetMouseButtonDown(0)&& timeGone > cooldownJump){
+
+            
+            //print("Zeit : "+Time.time+"  timeForNextJump"+timeForNextJump);
+
+            //
+            
+            timeGone = 0;
+
+            //timeForNextJump = (Time.time- time) +cooldownJump;
+
+
+
+            // Impuls 
+
+
+
             rb.AddForce(direction*0.05f, ForceMode.Impulse);
+        }else{
+           
+            timeGone = timeGone+Time.deltaTime;
         }
+
+        Debug.Log("timeGone : "+ timeGone + "coolDownJump :  "+ cooldownJump);
     }
 
     void FixedUpdate(){
