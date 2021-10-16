@@ -8,7 +8,7 @@ public class SwordController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         
-        if (other.gameObject.layer == 6)
+        if (other.tag == "Player")
         {
             Instantiate(deathEffect, transform.position, transform.rotation);
             Destroy(other.transform.parent.gameObject);

@@ -4204,8 +4204,13 @@ MonoBehaviour:
   - {fileID: 3470014950385245635, guid: 96556eab03e0bc641b8ee873bc666658, type: 3}
   - {fileID: 6335175035362761919, guid: 5f88f44f61b66f74c88b805ca819962c, type: 3}
   - {fileID: 5270171700880719220, guid: 9727753ea7ebc7d49baad38701c613f6, type: 3}
-  powerUps: []
-  monsters: []
+  powerUps:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  monsters:
+  - {fileID: 0}
 --- !u!4 &1352714793
 Transform:
   m_ObjectHideFlags: 0

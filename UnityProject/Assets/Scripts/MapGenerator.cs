@@ -81,7 +81,7 @@ public class MapGenerator : MonoBehaviour
                         Instantiate(
                         monsters[Random.Range(0,monsters.Length)], 
                         new Vector3((lastFloorPosx+i)*blockSize, 
-                        bottomPostion + blockSize*(lastFloorPosy+1), 0), Quaternion.identity);
+                        bottomPostion + blockSize*(lastFloorPosy+1), 0), Quaternion.Euler(0,-90,0));
                     }
 
                 }
