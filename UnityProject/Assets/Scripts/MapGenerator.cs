@@ -52,7 +52,7 @@ public class MapGenerator : MonoBehaviour
 
             if(blocked <= 0){
                 //check if you generate gaps or floor
-                if(Random.Range(0,100)>gapChance){
+                if(Random.Range(0,100)>gapChance || lastFloorPosx < 10){
                     //randomly increase or decrease floor height every 4 Blocks
                     if(lastFloorPosx%steps == 0 && lastFloorPosx != 0) lastFloorPosy += Random.Range(-3, 4);
 

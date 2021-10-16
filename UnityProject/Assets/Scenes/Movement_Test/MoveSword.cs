@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoveSword : MonoBehaviour
 {
@@ -8,6 +9,13 @@ public class MoveSword : MonoBehaviour
     public int height ;
     public float maxHeight;
     public float speed;
+    public float maxForce;
+
+    public float cooldownJump = 5;
+   
+
+    private float timeGone = 5;
+    public GameObject forceSlider;
 
     float swordAngle;
 
@@ -18,15 +26,21 @@ public class MoveSword : MonoBehaviour
     Rigidbody torso;
     Rigidbody leftLeg;
     Rigidbody rightLeg;
+    
+    Slider forceBar;
 
+    float forceMultiplier;
+    float forceRate = 15f;
 
 
     
     // Start is called before the first frame update
     void Start()
     {
-    
 
+     
+        forceBar = forceSlider.GetComponent<Slider>();
+        forceBar.maxValue = maxForce;
         cam = Camera.main;
         rb = GetComponent<Rigidbody>();
         torso = GameObject.Find("spine.003").GetComponent<Rigidbody>();
@@ -38,12 +52,12 @@ public class MoveSword : MonoBehaviour
     void Update()
     {
        //Movement
+        forceBar.value = forceMultiplier;
 
-        float xInput = Input.GetAxis("Horizontal");
-        float yInput = Input.GetAxis("Vertical");
-        
-        //Vector3 moveDirection = new Vector3(xInput,yInput, 0.0f);
-        //transform.position += moveDirection/30 ;
+        if(Input.GetMouseButton(0)){
+            forceMultiplier += forceRate*Time.deltaTime;
+            if(forceMultiplier >= maxForce) forceMultiplier = 15f;
+        }
 
         if(transform.position.z != 0) transform.position = new Vector3(transform.position.x, transform.position.y, 0);
       //Anker
@@ -88,15 +102,38 @@ public class MoveSword : MonoBehaviour
         
         
 
-        if( Input.GetMouseButtonDown(1)== true){
-
-            print("Mouse pressed");
-        }
         
+        
+    //Debug.Log(Vector3.right + new Vector3(totalForce.x, totalForce.y, 0));
         //rb.AddForce(-totalForce);
-        if(Input.GetMouseButtonDown(0)){
-            rb.AddForce(direction*0.05f, ForceMode.Impulse);
+
+
+
+        if(Input.GetMouseButtonUp(0)&& timeGone > cooldownJump){
+
+            
+            //print("Zeit : "+Time.time+"  timeForNextJump"+timeForNextJump);
+
+            //
+            
+            timeGone = 0;
+
+            //timeForNextJump = (Time.time- time) +cooldownJump;
+
+
+
+            // Impuls 
+
+
+
+            rb.AddForce(direction.normalized*forceMultiplier, ForceMode.Impulse);
+            forceMultiplier = 0;
+        }else{
+           
+            timeGone = timeGone+Time.deltaTime;
         }
+
+        //Debug.Log("timeGone : "+ timeGone + "coolDownJump :  "+ cooldownJump);
     }
 
     void FixedUpdate(){
