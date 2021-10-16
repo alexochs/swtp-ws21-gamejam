@@ -8,6 +8,7 @@ public class MobController : MonoBehaviour
     [SerializeField] private Transform target = null; 
     [SerializeField] private LayerMask playerMask;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,8 @@ public class MobController : MonoBehaviour
 
     private void OnTriggerStay(Collider other) {
         if(other.gameObject.layer == 6) anim.SetTrigger("Attack");
-    }
+    } 
     
+
+
 }
