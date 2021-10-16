@@ -71,7 +71,7 @@ public class MapGenerator : MonoBehaviour
                 }
             }
             //generate Floating
-            if(Random.Range(0,100)<floatingBlockChance) generateFloating();
+            if(Random.Range(0,100)<floatingBlockChance && lastFloorPosx>10) generateFloating();
             blocked--;
         }
     }

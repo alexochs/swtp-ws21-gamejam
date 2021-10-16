@@ -7,13 +7,10 @@ public class Block : MonoBehaviour
     public float friction;
     public int xPosition;
     public int yPosition;
-    
+
+
     float destructionTimer = 0f;
 
-    private void Awake()
-    {
-        
-    }
 
     public void die(){
         //animation
