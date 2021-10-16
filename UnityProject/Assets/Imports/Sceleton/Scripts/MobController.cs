@@ -17,7 +17,7 @@ public class MobController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)) anim.SetTrigger("Attack");
+        //if(Input.GetKeyDown(KeyCode.Space)) anim.SetTrigger("Attack");
         if (target != null)
         {
             if(Mathf.Round(target.position.y)  == Mathf.Round(gameObject.transform.position.y)) transform.LookAt(target);
