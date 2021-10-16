@@ -29,7 +29,7 @@ public class MapGenerator : MonoBehaviour
     {
         blockManager = GetComponent<BlockManager>();
         player = GameObject.FindGameObjectWithTag("Player");
-
+        
         lastFloorPosy = 0;
         generate(0, startingBlocks);
     }
@@ -52,7 +52,7 @@ public class MapGenerator : MonoBehaviour
 
             if(blocked <= 0){
                 //check if you generate gaps or floor
-                if(Random.Range(0,100)>gapChance){
+                if(Random.Range(0,100)>gapChance || lastFloorPosx < 10){
                     //randomly increase or decrease floor height every 4 Blocks
                     if(lastFloorPosx%steps == 0 && lastFloorPosx != 0) lastFloorPosy += Random.Range(-3, 4);
 
@@ -79,9 +79,11 @@ public class MapGenerator : MonoBehaviour
     public void generateFloating(){
         //spawn 2-4 floating at random height
         int height = Random.Range(2,7);
+        int r = Random.Range(0,floatingBlock.Length);
+
         for(int i = 0; i < Random.Range(1,5); i++){
             GameObject floBlock = Instantiate(
-                floatingBlock[Random.Range(0,floatingBlock.Length)], 
+                floatingBlock[r], 
                 new Vector3((lastFloorPosx+i)*blockSize, bottomPostion + blockSize*(lastFloorPosy+height), 0), 
                 Quaternion.identity
             );
