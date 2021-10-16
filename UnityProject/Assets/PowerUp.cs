@@ -18,7 +18,8 @@ public class PowerUp : MonoBehaviour
     IEnumerator Pickup(Collider player){ //IEnumerator
         Debug.Log("PowerUP picked up!");
         //Spawn a cool effect
-        Instantiate(pickupEffect, transform.position, transform.rotation);
+        GameObject clone = Instantiate(pickupEffect, transform.position, transform.rotation);
+        ParticleSystem.MainModule particle = clone.GetComponent<ParticleSystem>().main;
 
         //Apply effect to the player
         player.transform.localScale *= multiplier;
@@ -42,6 +43,8 @@ public class PowerUp : MonoBehaviour
         */
 
         //Destroy the Object
+        Destroy(clone, particle.duration);
         Destroy(gameObject);
+        
     }
 }
