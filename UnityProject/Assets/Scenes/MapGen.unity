@@ -155,12 +155,16 @@ MonoBehaviour:
   blockSize: 1
   bottomPostion: 0
   startingBlocks: 100
-  floatingBlockChance: 0
+  floatingBlockChance: 15
   gapChance: 5
-  maxGaps: 3
+  maxGaps: 5
+  maxFloorHeight: 10
+  steps: 9
+  spawnDistance: 50
   floor:
   - {fileID: 24419596658640754, guid: 220fede19b639cd429904278a14b74b2, type: 3}
-  floatingBlock: []
+  floatingBlock:
+  - {fileID: 6682572390948452848, guid: 6898ce35b143edc489abef2e9262884f, type: 3}
 --- !u!4 &142778688
 Transform:
   m_ObjectHideFlags: 0

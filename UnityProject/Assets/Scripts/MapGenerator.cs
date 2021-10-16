@@ -35,11 +35,6 @@ public class MapGenerator : MonoBehaviour
     
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)){
-            //generate(lastFloorPosx, 20);
-            Debug.Log(lastFloorPosx);
-        }
-        Debug.Log(Vector3.Distance(player.transform.position, new Vector3(lastFloorPosx*blockSize, player.transform.position.y, player.transform.position.z)));
         if(Vector3.Distance(player.transform.position, new Vector3(lastFloorPosx*blockSize, player.transform.position.y, player.transform.position.z)) <= spawnDistance){
             generate(lastFloorPosx, 25);
         }   
@@ -50,8 +45,9 @@ public class MapGenerator : MonoBehaviour
         //counter for gaps
         int blocked = 0;
         for(int i = startingpos; i<startingpos+amount; i++){
-            Debug.Log(i);
+            
             lastFloorPosx = i;
+
             if(blocked <= 0){
                 //check if you generate gaps or floor
                 if(Random.Range(0,100)>gapChance){
@@ -69,8 +65,6 @@ public class MapGenerator : MonoBehaviour
                     //generate 1-x gaps
                     blocked = Random.Range(1,maxGaps);
                 }
-
-                
             }
             //generate Floating
             if(Random.Range(0,100)<floatingBlockChance) generateFloating();
