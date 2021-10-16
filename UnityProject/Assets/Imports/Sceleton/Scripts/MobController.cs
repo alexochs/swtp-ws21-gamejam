@@ -25,11 +25,6 @@ public class MobController : MonoBehaviour
         
     }
 
-    private void FixedUpdate() 
-    {
-        
-    }
-
     private void OnTriggerStay(Collider other) {
         if(other.gameObject.layer == 6) anim.SetTrigger("Attack");
     }
