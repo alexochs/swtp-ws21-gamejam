@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7183835488738024150}
   - component: {fileID: 7176592967852675828}
   - component: {fileID: 7190734417196575779}
-  - component: {fileID: 7190734417196575778}
+  - component: {fileID: 6749638454346010195}
+  - component: {fileID: 6369426459172414639}
   m_Layer: 0
   m_Name: gem_05
   m_TagString: Untagged
@@ -96,7 +97,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.47
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7190734417196575778
+--- !u!114 &6749638454346010195
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,9 +106,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 7192206156879541636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5a699e07f1c8774b96fb1611cf55be5, type: 3}
+  m_Script: {fileID: 11500000, guid: e286aeb8fa30d054ea97c19cf8d19487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 100
+  yOffset: 1
+  amplitude: 0.5
+  frequency: 0.1
+--- !u!114 &6369426459172414639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7192206156879541636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181fe46252889dc46ae644c598db5763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pickupEffect: {fileID: 180128, guid: 6586ff0f14125534cae2f5d8f04b7871, type: 3}
   multiplier: 1.4
-  duration: 4
+  duration: 5
