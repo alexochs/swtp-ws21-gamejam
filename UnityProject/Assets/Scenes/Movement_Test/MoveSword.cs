@@ -36,6 +36,8 @@ public class MoveSword : MonoBehaviour
     float forceMultiplier;
     float forceRate = 25f;
 
+    float dmgTimer;
+
 
     
     // Start is called before the first frame update
@@ -144,8 +146,12 @@ public class MoveSword : MonoBehaviour
     }
 
     public void takeDamage(){
-        hp -= 30;
-        if(hp <= 0) die();
+        if(dmgTimer <=0){
+            hp -= 30;
+            if(hp <= 0) die();
+            dmgTimer = 0.5f;
+        }
+        
     }
 
     void die(){
