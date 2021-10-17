@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour
+public class HealthUp : MonoBehaviour
 {
     public GameObject pickupEffect;
 
     public float multiplier = 1.4f;
-    public float duration = 5f;
+    public float duration = 4f;
 
     void OnTriggerEnter(Collider other){
         if(other.CompareTag("Player")){
@@ -22,29 +22,21 @@ public class PowerUp : MonoBehaviour
         ParticleSystem.MainModule particle = clone.GetComponent<ParticleSystem>().main;
 
         //Apply effect to the player
-        player.transform.localScale *= multiplier;
 
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
 
+
+  
+        player.GetComponent<MoveSword>().hp = player.GetComponent<MoveSword>().maxhp;
         yield return new WaitForSeconds(duration);
-        player.transform.localScale /= multiplier;
-
-        /*
-        Player stats = player.GetComponent<PlayerStats>();
-        stats.health *= multiplier;
 
 
-
-        WAIT X AMOUNT OF SECONDS
-        
-
-        stats.health /= multiplier;
-        */
 
         //Destroy the Object
         Destroy(clone, particle.duration);
         Destroy(gameObject);
         
     }
+
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3245806125118318879}
   - component: {fileID: 3269166075928715189}
   - component: {fileID: 3269166075928715188}
+  - component: {fileID: 3200832730793860474}
   m_Layer: 0
   m_Name: gem_06
   m_TagString: Untagged
@@ -111,3 +112,19 @@ MonoBehaviour:
   pickupEffect: {fileID: 120410, guid: 6636b3078b0905e489f698a11b7a6b6b, type: 3}
   multiplier: 1.4
   duration: 4
+--- !u!114 &3200832730793860474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3268912588416877379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e286aeb8fa30d054ea97c19cf8d19487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 100
+  yOffset: 1
+  amplitude: 0.1
+  frequency: 100

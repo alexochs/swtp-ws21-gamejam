@@ -20,8 +20,8 @@ public class MoveSword : MonoBehaviour
     private GameManager gameManager;
 
     float swordAngle;
-    float maxhp = 90;
-    float hp;
+    public float maxhp = 90;
+    public float hp;
     bool dead;
 
     Camera cam;

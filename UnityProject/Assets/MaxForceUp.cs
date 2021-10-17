@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour
+public class MaxForceUp : MonoBehaviour
 {
     public GameObject pickupEffect;
 
@@ -22,25 +22,16 @@ public class PowerUp : MonoBehaviour
         ParticleSystem.MainModule particle = clone.GetComponent<ParticleSystem>().main;
 
         //Apply effect to the player
-        player.transform.localScale *= multiplier;
 
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
 
+
+  
+        player.GetComponent<MoveSword>().maxForce = 20;
         yield return new WaitForSeconds(duration);
-        player.transform.localScale /= multiplier;
+        player.GetComponent<MoveSword>().maxForce = 10;
 
-        /*
-        Player stats = player.GetComponent<PlayerStats>();
-        stats.health *= multiplier;
-
-
-
-        WAIT X AMOUNT OF SECONDS
-        
-
-        stats.health /= multiplier;
-        */
 
         //Destroy the Object
         Destroy(clone, particle.duration);
