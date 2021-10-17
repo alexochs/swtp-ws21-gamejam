@@ -5,10 +5,11 @@ using UnityEngine;
 public class SwordController : MonoBehaviour
 {
     public GameObject deathEffect;
+    public bool dead;
 
     private void OnTriggerEnter(Collider other) {
         
-        if (other.tag == "Body")
+        if (other.tag == "Body" && !dead)
         {
             Debug.Log("attk");
             //Instantiate(deathEffect, transform.position, transform.rotation);

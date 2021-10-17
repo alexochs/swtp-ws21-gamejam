@@ -7323,6 +7323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   height: 0
   maxForce: 10
+  forceRegen: 5
   cooldownJump: 0
   forceSlider: {fileID: 962538501}
   maxhp: 90

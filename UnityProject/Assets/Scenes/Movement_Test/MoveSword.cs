@@ -135,6 +135,7 @@ public class MoveSword : MonoBehaviour
         if(other.tag == "Skeleton"){
             other.gameObject.GetComponent<Animator>().enabled = false;
             other.gameObject.GetComponent<Rigidbody>().detectCollisions = false;
+            other.gameObject.GetComponentInChildren<SwordController>().dead = true;
             Destroy(other.gameObject, 5);
         }
     }
