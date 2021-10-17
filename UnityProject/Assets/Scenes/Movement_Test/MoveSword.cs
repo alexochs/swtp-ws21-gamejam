@@ -39,7 +39,7 @@ public class MoveSword : MonoBehaviour
 
     float dmgTimer;
 
-
+    private float lastPos;
     
     // Start is called before the first frame update
     void Start()
@@ -52,7 +52,8 @@ public class MoveSword : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         torso = GameObject.Find("spine.003").GetComponent<Rigidbody>();
         leftLeg = GameObject.Find("shin.L").GetComponent<Rigidbody>();
-        rightLeg = GameObject.Find("shin.R").GetComponent<Rigidbody>();   
+        rightLeg = GameObject.Find("shin.R").GetComponent<Rigidbody>();
+        lastPos = this.transform.position.x;
     }
 
     // Update is called once per frame
@@ -126,8 +127,16 @@ public class MoveSword : MonoBehaviour
             timeGone = timeGone+Time.deltaTime;
         }
 
+<<<<<<< Updated upstream
         //Debug.Log("timeGone : "+ timeGone + "coolDownJump :  "+ cooldownJump);
     
+=======
+        if (this.transform.position.x > lastPos)
+        {
+            gameManager.AddPoints(Mathf.RoundToInt(this.transform.position.x - lastPos));
+            lastPos = this.transform.position.x;
+        }
+>>>>>>> Stashed changes
     }
 
     private void OnTriggerEnter(Collider other)
