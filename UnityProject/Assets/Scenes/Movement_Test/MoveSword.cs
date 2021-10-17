@@ -17,7 +17,12 @@ public class MoveSword : MonoBehaviour
     private float timeGone = 5;
     public GameObject forceSlider;
 
+    private GameManager gameManager;
+
     float swordAngle;
+    float maxhp = 90;
+    float hp;
+    bool dead;
 
     Camera cam;
 
@@ -33,13 +38,15 @@ public class MoveSword : MonoBehaviour
     float forceMultiplier;
     float forceRate = 25f;
 
+    float dmgTimer;
+
 
     
     // Start is called before the first frame update
     void Start()
     {
-
-     
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        hp = maxhp;
         forceBar = forceSlider.GetComponent<Slider>();
         forceBar.maxValue = maxForce;
         cam = Camera.main;
@@ -57,7 +64,7 @@ public class MoveSword : MonoBehaviour
 
         if(forcePool<=maxForce) forcePool += 5f*Time.deltaTime;
 
-        if(Input.GetMouseButton(0) && forcePool>0){
+        if(Input.GetMouseButton(0) && forcePool>0 && !dead){
             forceMultiplier += forceRate*Time.deltaTime;
             forcePool -= forceRate*Time.deltaTime;
             if(forceMultiplier >= maxForce) forceMultiplier = 15f;
@@ -104,12 +111,6 @@ public class MoveSword : MonoBehaviour
         transform.rotation = Quaternion.Euler(0,0,angle);
 
         
-        
-
-        
-        
-    //Debug.Log(Vector3.right + new Vector3(totalForce.x, totalForce.y, 0));
-        //rb.AddForce(-totalForce);
 
 
 
@@ -138,6 +139,8 @@ public class MoveSword : MonoBehaviour
         }
 
         //Debug.Log("timeGone : "+ timeGone + "coolDownJump :  "+ cooldownJump);
+        if (transform.position.y < -20)
+            gameManager.FinishGame();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -145,5 +148,19 @@ public class MoveSword : MonoBehaviour
         if(other.tag == "Skeleton"){
             Destroy(other.gameObject);
         }
+    }
+
+    public void takeDamage(){
+        if(dmgTimer <=0){
+            hp -= 30;
+            if(hp <= 0) die();
+            dmgTimer = 0.5f;
+        }
+        
+    }
+
+    void die(){
+        dead = true;
+        GetComponent<MeshCollider>().enabled = false;
     }
 }

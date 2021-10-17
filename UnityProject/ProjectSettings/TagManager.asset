@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Shootable
   - Skeleton
+  - GameManager
+  - Body
   layers:
   - Default
   - TransparentFX
