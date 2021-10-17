@@ -125,6 +125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spinSpeed: 100
-  yOffset: 0
+  yOffset: 1
   amplitude: 0.5
   frequency: 0.1
