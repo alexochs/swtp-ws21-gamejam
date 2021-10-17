@@ -58,6 +58,7 @@ public class MoveSword : MonoBehaviour
     {
        //Movement
         forceBar.value = forcePool;
+        dmgTimer -= Time.deltaTime;
 
         if(forcePool<=maxForce) forcePool += 5f*Time.deltaTime;
 
