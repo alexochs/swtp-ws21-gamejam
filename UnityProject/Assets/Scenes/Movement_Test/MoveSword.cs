@@ -20,8 +20,8 @@ public class MoveSword : MonoBehaviour
     private GameManager gameManager;
 
     float swordAngle;
-    float maxhp = 90;
-    float hp;
+    public float maxhp = 90;
+    public float hp;
     bool dead;
 
     Camera cam;
@@ -61,6 +61,7 @@ public class MoveSword : MonoBehaviour
     {
        //Movement
         forceBar.value = forcePool;
+        dmgTimer -= Time.deltaTime;
 
         if(forcePool<=maxForce) forcePool += 5f*Time.deltaTime;
 
@@ -93,7 +94,7 @@ public class MoveSword : MonoBehaviour
 
         Vector2 totalForce = (torsoForce+legLForce+legRForce)*0.05f;
         
-
+        if(transform.position.y <= -20) hp = 0;
 
 
       //Schwertrotation
@@ -117,19 +118,7 @@ public class MoveSword : MonoBehaviour
         if(Input.GetMouseButtonUp(0)&& timeGone > cooldownJump){
 
             
-            //print("Zeit : "+Time.time+"  timeForNextJump"+timeForNextJump);
-
-            //
-            
             timeGone = 0;
-
-            //timeForNextJump = (Time.time- time) +cooldownJump;
-
-
-
-            // Impuls 
-
-
 
             rb.AddForce(direction.normalized*forceMultiplier, ForceMode.Impulse);
             forceMultiplier = 0;
@@ -156,7 +145,6 @@ public class MoveSword : MonoBehaviour
             if(hp <= 0) die();
             dmgTimer = 0.5f;
         }
-        
     }
 
     void die(){
