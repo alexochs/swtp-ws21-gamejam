@@ -127,16 +127,11 @@ public class MoveSword : MonoBehaviour
             timeGone = timeGone+Time.deltaTime;
         }
 
-<<<<<<< Updated upstream
-        //Debug.Log("timeGone : "+ timeGone + "coolDownJump :  "+ cooldownJump);
-    
-=======
-        if (this.transform.position.x > lastPos)
+        if (this.transform.position.x > lastPos + 1)
         {
-            gameManager.AddPoints(Mathf.RoundToInt(this.transform.position.x - lastPos));
+            gameManager.AddPoints(10);
             lastPos = this.transform.position.x;
         }
->>>>>>> Stashed changes
     }
 
     private void OnTriggerEnter(Collider other)
@@ -146,6 +141,7 @@ public class MoveSword : MonoBehaviour
             other.gameObject.GetComponent<Rigidbody>().detectCollisions = false;
             other.gameObject.GetComponentInChildren<SwordController>().dead = true;
             Destroy(other.gameObject, 5);
+            gameManager.AddPoints(100);
         }
     }
 
