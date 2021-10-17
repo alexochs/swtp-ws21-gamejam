@@ -17,6 +17,8 @@ public class MoveSword : MonoBehaviour
     private float timeGone = 5;
     public GameObject forceSlider;
 
+    private GameManager gameManager;
+
     float swordAngle;
 
     Camera cam;
@@ -38,8 +40,7 @@ public class MoveSword : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-     
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         forceBar = forceSlider.GetComponent<Slider>();
         forceBar.maxValue = maxForce;
         cam = Camera.main;
@@ -138,6 +139,8 @@ public class MoveSword : MonoBehaviour
         }
 
         //Debug.Log("timeGone : "+ timeGone + "coolDownJump :  "+ cooldownJump);
+        if (transform.position.y < -20)
+            gameManager.FinishGame();
     }
 
     private void OnTriggerEnter(Collider other)
