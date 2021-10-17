@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (this.status == "INGAME") points++;
+        //if (this.status == "INGAME") points++;
     }
 
     public string GetStatus()
