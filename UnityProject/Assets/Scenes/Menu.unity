@@ -5517,7 +5517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Theme
-    clip: {fileID: 8300000, guid: 19f6681908a76fb4390b745e0fd81a2c, type: 3}
+    clip: {fileID: 8300000, guid: 09665af6f5d9ca147a712d0b424fdae3, type: 3}
     volume: 1
     pitch: 1
     loop: 1
@@ -11446,9 +11446,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1079157259}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: StartNewGame
+      - m_Target: {fileID: 160680105}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: loadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
