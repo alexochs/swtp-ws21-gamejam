@@ -6,18 +6,19 @@ public class CameraScript : MonoBehaviour
 {
     private GameObject charakter;
 
-    public float xMin;
-    public float xMax;
-    public float yMin;
-    public float yMax;
+    private float xMin = -2000;
+    private float xMax = 2000;
+    private float yMin = 0;
+    private float yMax = 30;
 
-    public float xOffset;
-    public float yOffset;
+    private float xOffset = 1;
+    private float yOffset = 2;
 
     // Start is called before the first frame update
     void Start(){
 
         charakter = GameObject.Find("Sword");
+        gameObject.transform.Rotate(new Vector3(5, 7.5f, 0));
     }
   
 
