@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        //if (GameObject.FindGameObjectsWithTag("GameManager").Length > 1)
+        //    Destroy(this.gameObject);
+
         DontDestroyOnLoad(this); // keeps the GameManager between scenes
         Reset();
     }
@@ -48,6 +51,13 @@ public class GameManager : MonoBehaviour
     {
         LoadScene("Game");
         this.status = "INGAME";
+    }
+
+    public void FinishGame()
+    {
+        LoadScene("Menu");
+        this.status = "MENU";
+        Destroy(this.gameObject);
     }
 
     public void QuitGame()
