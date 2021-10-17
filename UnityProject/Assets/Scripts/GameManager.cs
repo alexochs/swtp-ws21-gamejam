@@ -7,13 +7,21 @@ public class GameManager : MonoBehaviour
 {
     private string status;
     private int points;
+    public static GameManager instance = null; 
+
+       
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else if (instance != this) Destroy(gameObject);
+        DontDestroyOnLoad(this.gameObject);
+    }
+
 
     void Start()
     {
         //if (GameObject.FindGameObjectsWithTag("GameManager").Length > 1)
         //    Destroy(this.gameObject);
-
-        DontDestroyOnLoad(this); // keeps the GameManager between scenes
         Reset();
     }
 
