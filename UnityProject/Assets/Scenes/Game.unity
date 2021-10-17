@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 1cf6f4c6e6e0518419839d3f5448dd99, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.08046272, g: 0.09985325, b: 0.30124953, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2570,9 +2570,7 @@ MonoBehaviour:
   deathMenuScore: {fileID: 1235964118}
   scoreText: {fileID: 986518666}
   slider1: {fileID: 10899340}
-  maxlife: 100
-  life: 100
-  score: 0
+  moveSword: {fileID: 1930803401}
 --- !u!114 &917475983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5966,10 +5964,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 035f260d7c58df04a881226db8cb5ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xMin: -2000
-  xMax: 2000
-  yMin: -10
-  yMax: 2000
 --- !u!1 &1535634004
 GameObject:
   m_ObjectHideFlags: 0
@@ -7328,11 +7322,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   height: 0
-  maxHeight: 0
-  speed: 0
   maxForce: 10
   cooldownJump: 0
   forceSlider: {fileID: 962538501}
+  maxhp: 90
   hp: 0
 --- !u!54 &1930803402
 Rigidbody:
