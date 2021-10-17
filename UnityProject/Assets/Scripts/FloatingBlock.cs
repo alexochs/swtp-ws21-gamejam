@@ -56,7 +56,7 @@ public class FloatingBlock : Block
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player"){
+        if(other.gameObject.tag == "Player" || other.gameObject.tag == "Body"){
             GetComponentInChildren<Canvas>().enabled = true;
             active = true;
         } 
