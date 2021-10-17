@@ -30,6 +30,7 @@ public class UIMenu : MonoBehaviour
 
         if (moveSword.hp <= 0)
         {
+            Time.timeScale = 0;
             UI.SetActive(false);
             deathMenuScore.text = gm.GetPoints().ToString();
             deathMenu.SetActive(true);

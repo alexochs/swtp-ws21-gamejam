@@ -6,10 +6,9 @@ using UnityEngine.UI;
 public class MoveSword : MonoBehaviour
 {
 
-    public int height ;
-    public float maxHeight;
-    public float speed;
+    public int height;
     public float maxForce;
+    public float forceRegen;
 
     public float cooldownJump = 5;
    
@@ -63,12 +62,12 @@ public class MoveSword : MonoBehaviour
         forceBar.value = forcePool;
         dmgTimer -= Time.deltaTime;
 
-        if(forcePool<=maxForce) forcePool += 5f*Time.deltaTime;
+        if(forcePool<=maxForce) forcePool += forceRegen*Time.deltaTime;
 
         if(Input.GetMouseButton(0) && forcePool>0 && !dead){
             forceMultiplier += forceRate*Time.deltaTime;
             forcePool -= forceRate*Time.deltaTime;
-            if(forceMultiplier >= maxForce) forceMultiplier = 15f;
+            if(forceMultiplier >= maxForce) forceMultiplier = maxForce;
         }
 
         if(transform.position.z != 0) transform.position = new Vector3(transform.position.x, transform.position.y, 0);
@@ -128,14 +127,16 @@ public class MoveSword : MonoBehaviour
         }
 
         //Debug.Log("timeGone : "+ timeGone + "coolDownJump :  "+ cooldownJump);
-        if (transform.position.y < -20)
-            gameManager.FinishGame();
+    
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Skeleton"){
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<Animator>().enabled = false;
+            other.gameObject.GetComponent<Rigidbody>().detectCollisions = false;
+            other.gameObject.GetComponentInChildren<SwordController>().dead = true;
+            Destroy(other.gameObject, 5);
         }
     }
 
