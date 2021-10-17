@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5968,7 +5968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xMin: -2000
   xMax: 2000
-  yMin: -2000
+  yMin: -10
   yMax: 2000
 --- !u!1 &1535634004
 GameObject:
@@ -7333,6 +7333,7 @@ MonoBehaviour:
   maxForce: 10
   cooldownJump: 0
   forceSlider: {fileID: 962538501}
+  hp: 0
 --- !u!54 &1930803402
 Rigidbody:
   m_ObjectHideFlags: 0

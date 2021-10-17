@@ -12,26 +12,26 @@ public class UIMenu : MonoBehaviour
     public TextMeshProUGUI deathMenuScore;
     public TextMeshProUGUI scoreText;
     public Slider slider1;
-    public int maxlife;
-    public int life;
-    public int score;
+    public MoveSword moveSword;
+    GameManager gm;
 
     // Start is called before the first frame update
     void Start()
     {
-        slider1.maxValue = maxlife;
+        slider1.maxValue = moveSword.maxhp;
+        gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Score:  " + score.ToString();
-        slider1.value = life;
+        scoreText.text = "Score:  " + gm.GetPoints().ToString();
+        slider1.value = moveSword.hp;
 
-        if (life <= 0)
+        if (moveSword.hp <= 0)
         {
             UI.SetActive(false);
-            deathMenuScore.text = score.ToString();
+            deathMenuScore.text = gm.GetPoints().ToString();
             deathMenu.SetActive(true);
         }
     }

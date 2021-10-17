@@ -74,13 +74,13 @@ public class MapGenerator : MonoBehaviour
                     if(Random.Range(0,100)<=powerUpSpawnChance){
                         Instantiate(
                         powerUps[Random.Range(0,powerUps.Length)], 
-                        new Vector3((lastFloorPosx+i)*blockSize, 
+                        new Vector3((lastFloorPosx)*blockSize, 
                         bottomPostion + blockSize*(lastFloorPosy+1), 0), Quaternion.identity);
                     }
                     else if(r<= monsterSpawnChance){
                         Instantiate(
                         monsters[Random.Range(0,monsters.Length)], 
-                        new Vector3((lastFloorPosx+i)*blockSize, 
+                        new Vector3((lastFloorPosx)*blockSize, 
                         bottomPostion + blockSize*(lastFloorPosy+1), 0), Quaternion.Euler(0,-90,0));
                     }
 
