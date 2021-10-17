@@ -24,7 +24,7 @@ public class CameraScript : MonoBehaviour
     void Update()
     {
 
-        float x = Mathf.Clamp(charakter.transform.position.x, xMin,xMax);
+        float x = charakter.transform.position.x;
         float y = Mathf.Clamp(charakter.transform.position.y, yMin,yMax);
 
         gameObject.transform.position = new Vector3(x,y,gameObject.transform.position.z);
