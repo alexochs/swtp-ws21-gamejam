@@ -27,7 +27,13 @@ public class MobController : MonoBehaviour
     }
 
     private void OnTriggerStay(Collider other) {
-        if(other.tag == "Player") anim.SetTrigger("Attack");
+        if(other.tag == "Body"){
+            anim.SetTrigger("Attack");
+        } 
+    }
+
+    public void die(){
+        Destroy(this.gameObject);
     } 
     
 

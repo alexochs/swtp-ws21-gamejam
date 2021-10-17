@@ -8,10 +8,11 @@ public class SwordController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         
-        if (other.tag == "Player")
+        if (other.tag == "Body")
         {
-            Instantiate(deathEffect, transform.position, transform.rotation);
-            Destroy(other.transform.parent.gameObject);
+            Debug.Log("attk");
+            //Instantiate(deathEffect, transform.position, transform.rotation);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<MoveSword>().takeDamage();
             //trigger GameOver
         }
     }

@@ -18,6 +18,8 @@ public class MoveSword : MonoBehaviour
     public GameObject forceSlider;
 
     float swordAngle;
+    float maxhp = 90;
+    float hp;
 
     Camera cam;
 
@@ -38,8 +40,7 @@ public class MoveSword : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-     
+        hp = maxhp;
         forceBar = forceSlider.GetComponent<Slider>();
         forceBar.maxValue = maxForce;
         cam = Camera.main;
@@ -104,12 +105,6 @@ public class MoveSword : MonoBehaviour
         transform.rotation = Quaternion.Euler(0,0,angle);
 
         
-        
-
-        
-        
-    //Debug.Log(Vector3.right + new Vector3(totalForce.x, totalForce.y, 0));
-        //rb.AddForce(-totalForce);
 
 
 
@@ -145,5 +140,14 @@ public class MoveSword : MonoBehaviour
         if(other.tag == "Skeleton"){
             Destroy(other.gameObject);
         }
+    }
+
+    public void takeDamage(){
+        hp -= 30;
+        if(hp <= 0) die();
+    }
+
+    void die(){
+
     }
 }
