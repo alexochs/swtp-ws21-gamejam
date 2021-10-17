@@ -25,7 +25,7 @@ public class Menu : MonoBehaviour
 
     public void loadGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Game");
     }
 
     public void changeVolume()

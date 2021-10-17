@@ -31,6 +31,7 @@ public class MapGenerator : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         blockManager = GetComponent<BlockManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         
