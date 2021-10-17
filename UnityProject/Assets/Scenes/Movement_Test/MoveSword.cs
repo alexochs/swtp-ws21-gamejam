@@ -133,7 +133,9 @@ public class MoveSword : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Skeleton"){
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<Animator>().enabled = false;
+            other.gameObject.GetComponent<Rigidbody>().detectCollisions = false;
+            Destroy(other.gameObject, 5);
         }
     }
 

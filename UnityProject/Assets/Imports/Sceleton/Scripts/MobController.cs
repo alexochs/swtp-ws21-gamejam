@@ -13,6 +13,7 @@ public class MobController : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        target = GameObject.Find("Sword").transform;
     }
 
     // Update is called once per frame
@@ -21,7 +22,8 @@ public class MobController : MonoBehaviour
         //if(Input.GetKeyDown(KeyCode.Space)) anim.SetTrigger("Attack");
         if (target != null)
         {
-            if(Mathf.Round(target.position.y)  == Mathf.Round(gameObject.transform.position.y)) transform.LookAt(target);
+            if(target.position.x < transform.position.x) transform.rotation = Quaternion.Euler(0, 270, 0);
+            if(target.position.x > transform.position.x) transform.rotation = Quaternion.Euler(0, 90, 0);
         }
         
     }
