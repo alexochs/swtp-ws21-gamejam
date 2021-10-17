@@ -20,6 +20,7 @@ public class MoveSword : MonoBehaviour
     float swordAngle;
     float maxhp = 90;
     float hp;
+    bool dead;
 
     Camera cam;
 
@@ -34,6 +35,8 @@ public class MoveSword : MonoBehaviour
     float forcePool = 0f;
     float forceMultiplier;
     float forceRate = 25f;
+
+    float dmgTimer;
 
 
     
@@ -58,7 +61,7 @@ public class MoveSword : MonoBehaviour
 
         if(forcePool<=maxForce) forcePool += 5f*Time.deltaTime;
 
-        if(Input.GetMouseButton(0) && forcePool>0){
+        if(Input.GetMouseButton(0) && forcePool>0 && !dead){
             forceMultiplier += forceRate*Time.deltaTime;
             forcePool -= forceRate*Time.deltaTime;
             if(forceMultiplier >= maxForce) forceMultiplier = 15f;
@@ -143,11 +146,16 @@ public class MoveSword : MonoBehaviour
     }
 
     public void takeDamage(){
-        hp -= 30;
-        if(hp <= 0) die();
+        if(dmgTimer <=0){
+            hp -= 30;
+            if(hp <= 0) die();
+            dmgTimer = 0.5f;
+        }
+        
     }
 
     void die(){
-
+        dead = true;
+        GetComponent<MeshCollider>().enabled = false;
     }
 }
