@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Shootable
+  - Skeleton
   layers:
   - Default
   - TransparentFX
@@ -11,6 +13,11 @@ TagManager:
   - 
   - Water
   - UI
+  - 
+  - 
+  - Lighting
+  - Ground
+  - Postprocessing
   - Player
   - Mob
   - 
@@ -32,12 +39,10 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
   m_SortingLayers:
+  - name: Fire
+    uniqueID: 3804908061
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

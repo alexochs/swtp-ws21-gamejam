@@ -157,8 +157,8 @@ MonoBehaviour:
   bottomPostion: 0
   startingBlocks: 100
   floatingBlockChance: 15
-  gapChance: 5
-  maxGaps: 5
+  gapChance: 10
+  maxGaps: 8
   maxFloorHeight: 10
   steps: 9
   spawnDistance: 50
@@ -301,6 +301,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  currentx: 0
 --- !u!1 &160623019 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1450761613558226, guid: f7902c99c75cad34f934860c6b6ddd9e, type: 3}
@@ -852,6 +853,7 @@ GameObject:
   - component: {fileID: 608420870}
   - component: {fileID: 608420869}
   - component: {fileID: 608420868}
+  - component: {fileID: 608420871}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -924,6 +926,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &608420871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608420867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035f260d7c58df04a881226db8cb5ee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xMin: -1000
+  xMax: 1000
+  yMin: -1000
+  yMax: 1000
 --- !u!1 &680008080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,6 +1189,10 @@ PrefabInstance:
     - target: {fileID: 626282352945076595, guid: 07386ea35b0703b4b860da37b73db8c3, type: 3}
       propertyPath: m_Name
       value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 626282352945076595, guid: 07386ea35b0703b4b860da37b73db8c3, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 626282352945169747, guid: 07386ea35b0703b4b860da37b73db8c3, type: 3}
       propertyPath: m_RootOrder

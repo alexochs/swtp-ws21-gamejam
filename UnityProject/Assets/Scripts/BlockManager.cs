@@ -8,7 +8,7 @@ public class BlockManager : MonoBehaviour
     public float timePerBlock;
     public List<GameObject> blocks;
     float timer;
-    int currentx = 0;
+    public int currentx = 0;
 
     private void Awake()
     {
@@ -21,6 +21,7 @@ public class BlockManager : MonoBehaviour
         timer -= Time.deltaTime;
         if(timer <= 0){
             timer=timePerBlock;
+            timePerBlock -= timePerBlock*0.1f*1f/20f;
             clearBlocks();
         } 
     }

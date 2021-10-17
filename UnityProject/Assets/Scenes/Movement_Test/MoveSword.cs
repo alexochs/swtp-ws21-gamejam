@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoveSword : MonoBehaviour
 {
@@ -8,11 +9,13 @@ public class MoveSword : MonoBehaviour
     public int height ;
     public float maxHeight;
     public float speed;
+    public float maxForce;
 
     public float cooldownJump = 5;
    
 
-    private float timeGone;
+    private float timeGone = 5;
+    public GameObject forceSlider;
 
     float swordAngle;
 
@@ -23,7 +26,12 @@ public class MoveSword : MonoBehaviour
     Rigidbody torso;
     Rigidbody leftLeg;
     Rigidbody rightLeg;
+    
+    Slider forceBar;
 
+    float forcePool = 0f;
+    float forceMultiplier;
+    float forceRate = 25f;
 
 
     
@@ -32,8 +40,8 @@ public class MoveSword : MonoBehaviour
     {
 
      
-    
-
+        forceBar = forceSlider.GetComponent<Slider>();
+        forceBar.maxValue = maxForce;
         cam = Camera.main;
         rb = GetComponent<Rigidbody>();
         torso = GameObject.Find("spine.003").GetComponent<Rigidbody>();
@@ -45,14 +53,15 @@ public class MoveSword : MonoBehaviour
     void Update()
     {
        //Movement
+        forceBar.value = forcePool;
 
-      // cooldownJump = 5;
+        if(forcePool<=maxForce) forcePool += 5f*Time.deltaTime;
 
-        float xInput = Input.GetAxis("Horizontal");
-        float yInput = Input.GetAxis("Vertical");
-        
-        //Vector3 moveDirection = new Vector3(xInput,yInput, 0.0f);
-        //transform.position += moveDirection/30 ;
+        if(Input.GetMouseButton(0) && forcePool>0){
+            forceMultiplier += forceRate*Time.deltaTime;
+            forcePool -= forceRate*Time.deltaTime;
+            if(forceMultiplier >= maxForce) forceMultiplier = 15f;
+        }
 
         if(transform.position.z != 0) transform.position = new Vector3(transform.position.x, transform.position.y, 0);
       //Anker
@@ -99,12 +108,12 @@ public class MoveSword : MonoBehaviour
 
         
         
-//Debug.Log(Vector3.right + new Vector3(totalForce.x, totalForce.y, 0));
+    //Debug.Log(Vector3.right + new Vector3(totalForce.x, totalForce.y, 0));
         //rb.AddForce(-totalForce);
 
 
 
-        if(Input.GetMouseButtonDown(0)&& timeGone > cooldownJump){
+        if(Input.GetMouseButtonUp(0)&& timeGone > cooldownJump){
 
             
             //print("Zeit : "+Time.time+"  timeForNextJump"+timeForNextJump);
@@ -121,23 +130,20 @@ public class MoveSword : MonoBehaviour
 
 
 
-            rb.AddForce(direction*0.05f, ForceMode.Impulse);
+            rb.AddForce(direction.normalized*forceMultiplier, ForceMode.Impulse);
+            forceMultiplier = 0;
         }else{
            
             timeGone = timeGone+Time.deltaTime;
         }
 
-        Debug.Log("timeGone : "+ timeGone + "coolDownJump :  "+ cooldownJump);
+        //Debug.Log("timeGone : "+ timeGone + "coolDownJump :  "+ cooldownJump);
     }
 
-    void FixedUpdate(){
-
-      
-        
-
-        
-
-
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Skeleton"){
+            Destroy(other.gameObject);
+        }
     }
 }
